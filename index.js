@@ -3,10 +3,11 @@ const fs = require('fs');
 const url = require('url');
 const {guardarDB, leerDB} = require('./helpers/guardarDB');
 const ControllerUser = require('./controllers/controller.users');
-
+const PORT = process.env.PORT || 3000;
 const _ControllerUser = new ControllerUser();
 const usersJSON = fs.readFileSync('./data/users.json','utf8');
 _ControllerUser.cargarUsersFromArray(JSON.parse(usersJSON));
+
 
 const app = http.createServer(async (req,res)=>{
     const parsedUrl =url.parse(req.url, true);
@@ -79,4 +80,4 @@ const app = http.createServer(async (req,res)=>{
      }  
 
     res.end();
-}).listen(3000);
+}).listen(PORT);
