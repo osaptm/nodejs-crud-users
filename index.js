@@ -80,4 +80,8 @@ const app = http.createServer(async (req,res)=>{
      }  
 
     res.end();
-}).listen(PORT);
+});
+
+app.listen(PORT,()=>{
+    console.log("Escuchado en puerto",PORT)
+})
