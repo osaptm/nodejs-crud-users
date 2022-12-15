@@ -9,7 +9,7 @@ async function submitForm(){
     const country = document.getElementById('country').value; if(country.trim()===""){ alert('Ingrese Pais'); return false;}
     const objUser = {name, age, country}
 
-    const response = await fetch('http://localhost:3000/users', {
+    const response = await fetch(window.location.href+'users', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(objUser) 
@@ -29,7 +29,7 @@ async function editForm(){
 
     const objUser = {id, name, age, country}
 
-    const response = await fetch('http://localhost:3000/users', {
+    const response = await fetch(window.location.href+'users', {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(objUser) 
@@ -44,7 +44,7 @@ async function editForm(){
     }
 }
 async function deleteUser(iduser){
-    const response = await fetch('http://localhost:3000/users', {
+    const response = await fetch(window.location.href+'users', {
         method: 'DELETE',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({id:iduser}) 
@@ -56,7 +56,7 @@ async function deleteUser(iduser){
 }
 
 async function getUser(iduser){
-    const response = await fetch('http://localhost:3000/users?id='+iduser, {
+    const response = await fetch(window.location.href+'users?id='+iduser, {
         method: 'GET',
         headers: {'Content-Type': 'application/json'}
     });
@@ -74,7 +74,7 @@ async function getUser(iduser){
 
 
 async function listarUsuarios() {
-    const response = await fetch('http://localhost:3000/users');
+    const response = await fetch(window.location.href+'users');
     const objeto = await response.json();
     const listado = document.getElementById('listado');
     let html = '';
